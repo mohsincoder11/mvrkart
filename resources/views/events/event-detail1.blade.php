@@ -117,9 +117,19 @@
                                        @if ($edit_event->type_of_event==1)
                                         
                                          <a href="{{ route('register',$edit_event->id) }}" class="theme-btn">REGISTER NOW</a>   
-                                        @else
-                                         <a href="{{ route('register2',$edit_event->id) }}" class="theme-btn">REGISTER NOW</a>  
+                                         @if($edit_event->allow_pay_later=='1')
+                                         <a href="{{ route('register-pay-later1',$edit_event->id) }}" class="theme-btn">REGISTER NOW & PAY LATER
+                                        </a>  
                                         @endif
+                                        @else
+                                         <a href="{{ route('register2',$edit_event->id) }}" class="theme-btn">REGISTER NOW</a> 
+                                          @if($edit_event->allow_pay_later=='1')
+                                          <a href="{{ route('register-pay-later2',$edit_event->id) }}" class="theme-btn">REGISTER NOW & PAY LATER
+                                        </a>   
+                                        @endif
+                                        @endif
+                                       
+                                        
                                         @endif
                                              
                                          

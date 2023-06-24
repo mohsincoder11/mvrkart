@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Admin Login</title>
+    <link rel="icon" href="{{ asset('assets/images/favicon-32x32.png') }}" type="image/png" />
+
     <style>
       .login-form {
   width: 360px;
@@ -45,7 +47,7 @@
 
 .btn-primary {
   display: block;
-  width: 100%;
+  width: 106%;
   padding: 10px;
   font-size: 15px;
   line-height: 1.42857143;
@@ -100,7 +102,7 @@
   <div class="login-form">
     <form action="{{route('post-login')}}" method="post">
       @csrf
-      <h2 class="text-center mb-4">Log in</h2>
+      <h2 class="text-center mb-4">Log In</h2>
       <div class="form-group">
         <input type="text" class="form-control" name="email" placeholder="Email" required="required">
       </div>

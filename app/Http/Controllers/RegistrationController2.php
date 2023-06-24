@@ -85,6 +85,76 @@ class RegistrationController2 extends Controller
 
     }
 
+    public function register_pay_later2(Request $request)
+    {
+
+        $event=Event::find($request->id);
+        $event_id=$event->id;
+        return view('events.register-pay-later2',compact('event_id'));
+    }
+    
+    
+    public function insert_pay_later(Request $request)
+    {
+
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'competitor' => 'required',
+                'state' => 'required',
+                'city' => 'required',
+                'contact_no' => 'required',
+                'category' => 'required',
+                'email' => 'required',
+                'event_id' => 'required',
+                
+                
+              
+            ]
+           );
+            if ($validator->fails()) {
+                $errors = '';
+                $messages = $validator->messages();
+                foreach ($messages->all() as $message) {
+                    $errors .= $message . "<br>";
+                }
+                return back()->with(['error'=>$errors]);
+            }
+      
+
+        $store = new Registration2;
+        
+        // Save event details in database
+        $store->competitor = $request->competitor;
+        $store->state =$request-> state;
+        $store->city = $request->city;
+        $store->contact_no = $request->contact_no;
+        $store->category = $request-> category;
+        $store->email = $request->email;
+        $store -> payment_status = 'Pending';
+        $store -> order_id = $request->order_id;
+        $store -> event_id = $request->event_id;
+
+    
+      
+
+
+            // echo json_encode($event);
+            // exit();
+            $store->save();
+            $registration_data1=Registration2::where('id',$store->id)->first();
+
+            $registration_data=['registration_data'=>$registration_data1];
+                  Mail::send('success_mail2', $registration_data, function($message) use($registration_data1) {
+                   $message->to($registration_data1->email, $registration_data1->competitor)->subject
+                      ('Registration success');
+                   $message->from('info@mvrmotorsports.com','Kart 1');
+                  });
+               
+            return redirect()->route('success-landing')->with(['success'=> 'Event subscribed successfully.']);
+
+    }
+
     public function success_callback(Request $request)
     {
         $encResponse=$_POST["encResp"];			//This is the response sent by the CCAvenue Server

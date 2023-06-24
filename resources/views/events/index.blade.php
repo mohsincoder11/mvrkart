@@ -102,6 +102,14 @@
                                                                 required>
 
                                                         </div>
+                                                        
+                                                        <div class="col-md-3 mt-4">
+                                                            <label for="toggle-pay-later">Allow Pay Later?</label>
+                                                            <label class="switch s-outline s-outline-primary  mr-2" style="display: inline-block;">
+                                                              <input type="checkbox" name="allow_pay_later" value="1" id="toggle-pay-later">
+                                                              <span class="slider round"></span>
+                                                            </label>
+                                                          </div>
 
                                                         <div class="col-md-12">
                                                             <label>Description</label>

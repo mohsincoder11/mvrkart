@@ -24,7 +24,8 @@ class Event extends Model
         'event_rule_book',
         'description',
         'schedule_date',
-        'schedule_activity'
+        'schedule_activity',
+        'allow_pay_later'
     ];
 
     protected $casts = [
