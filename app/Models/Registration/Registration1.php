@@ -26,21 +26,22 @@ class Registration1 extends Model
         'payment_status',
         'order_id',
         'payment_info',
-		        'event_id'
+        'event_id',
+        'allow_pay_later'
 
     ];
-	  public function getEventInfoAttribute()
+    public function getEventInfoAttribute()
     {
         return Event::find($this->event_id);
     }
     public function getCategoryNameAttribute()
     {
-        $category_name=[
-            1=>'Senior',
-            2=>'Junior',
-            3=>'Women',
-            4=>'Professional',
-            'Select Category'=>NULL
+        $category_name = [
+            1 => 'Senior',
+            2 => 'Junior',
+            3 => 'Women',
+            4 => 'Professional',
+            'Select Category' => NULL
         ];
         return  $category_name[$this->category];
     }

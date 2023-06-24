@@ -47,7 +47,7 @@
                             <td>{{ $general_all->email}}</td>
                             <td>{{ $general_all->category_name }}</td>
                             <td><img src="{{ asset('assets1/images/registration1/'.$general_all->college_id) }}" width="100" height="100" ></th>
-                            <td>{{ $general_all->payment_status }}</td>
+                            <td>{{ $general_all->payment_status }}({{$general_all->allow_pay_later}})</td>
                             <td>
                                
                                 {{-- <a href="{{route('',$general_all->id>) }}"><button type="button" class="btn1 btn-outline-success"><i
