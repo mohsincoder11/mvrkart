@@ -35,7 +35,7 @@
                             <td>{{ $college->contact_no}}</td>
                             <td>{{ $college->email }}</td>
                             <td>{{ $college->category_name }}</td>
-                            <td>{{ $college->payment_status }}</td>
+                            <td>{{ $college->payment_status }}({{$college->allow_pay_later}})</td>
                             <td Style="background-color:white">
                                
                                 {{-- <a href="{{route('',$college->id>) }}"><button type="button" class="btn1 btn-outline-success"><i

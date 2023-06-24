@@ -245,7 +245,7 @@ option{
             <div class="outer-box clearfix">
             <img src="{{ asset('assets1/images/path.png')}}" style="width:89%; padding-left:15px;"> 
                 <div class="logo-box pull-left">
-                    <figure class="logo"><img src="{{ asset('assets1/images/kart1.png')}}" alt=""    style="height:100px; width:120px;"></figure>
+                    <figure class="logo"><a href="{{route('home')}}"><img src="{{ asset('assets1/images/kart1.png')}}" alt=""    style="height:100px; width:120px;"></a></figure>
                 </div>
      
                 <div class="menu-area clearfix pull-right">
@@ -296,8 +296,8 @@ option{
             <div class="outer-box clearfix">
             <img src="{{ asset('assets1/images/path.png')}}" style="width:89%; padding-left:15px;"> 
                 <div class="logo-box pull-left">
-                    <figure class="logo"><img src="{{ asset('assets1/images/kart1.png')}}"  alt=""
-                    style="height:100px; width:120px;">
+                    <figure class="logo"><a href="{{route('home')}}"><img src="{{ asset('assets1/images/kart1.png')}}"  alt=""
+                    style="height:100px; width:120px;"></a>
                     </figure>
                 </div>
                 <div class="menu-area clearfix pull-right">

@@ -182,11 +182,12 @@
                                         <th>Sr.No.</th>
                                         <th>Event Name</th>
                                         <th>Location</th>
+                                        <th>Type</th>  
                                         <th>Front Image</th>
                                         <th>Banner Image</th>
                                         <th>Rule Book</th>
                                         <th>Date</th>
-                                        <th>Event Closing Date</th>
+                                        <th>Closing Date</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -196,6 +197,7 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $event->event_name }}</td>
                                             <td>{{ $event->location }}</td>
+                                            <td> {{$event->type_of_event=='2' ? 'General' : 'College'}}</td>
                                             <td><img src="{{ asset('assets1/images/event/' . $event->event_front_image) }}"
                                                     width="100" height="100" /></td>
                                             <td><img src="{{ asset('assets1/images/event/' . $event->event_banner_image) }}"
@@ -206,7 +208,7 @@
 
                                             <td><a target="_blank"
                                                     href="{{ asset('assets1/images/event/' . $event->event_rule_book) }}">
-                                                    {{ $event->event_rule_book }}</a></td>
+                                                    {{ Str::limit($event->event_rule_book,30) }}</a></td>
                                             <td>{{ date('d-m-Y', strtotime($event->event_date)) }}</td>
                                             <td>{{ date('d-m-Y', strtotime($event->closing_date)) }}</td>
                                             <td>

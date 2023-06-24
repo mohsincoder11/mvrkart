@@ -57,7 +57,7 @@
     <div class="container">
       <h1>Success!</h1>
       <p>Dear {{$registration_data->team_name}},</p>
-      <p>We are happy to inform you that your registration towards <b>{{$registration_data->event_info->event_name}}</b> dated <b>{{date('d M Y',strtotime($registration_data->event_info->event_date))}}</b> for <b>{{$registration_data->event_info->location_name}}</b> has been confirmed. We will keep you updated from time to time.</p>
+      <p>We are happy to inform you that your registration towards <b>{{$registration_data->event_info->event_name}}</b> dated <b>{{date('d M Y',strtotime($registration_data->event_info->event_date))}}</b> for <b>{{$registration_data->event_info->location_name}}</b> has been @if($registration_data->allow_pay_later=='Pay Later') processing. @else confirmed.@endif. We will keep you updated from time to time.</p>
       <p>For any queries, you may contact us on <a href="mailto:info@mvrmotorsports.com">info@mvrmotorsports.com</a> or call us on <a href="tel:+918484968646">84849 68646</a>.</p>
       <p>Regards,</p>
 

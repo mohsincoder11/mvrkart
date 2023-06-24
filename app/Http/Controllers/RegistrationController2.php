@@ -134,6 +134,7 @@ class RegistrationController2 extends Controller
         $store -> payment_status = 'Pending';
         $store -> order_id = $request->order_id;
         $store -> event_id = $request->event_id;
+        $store->allow_pay_later='Pay Later';
 
     
       

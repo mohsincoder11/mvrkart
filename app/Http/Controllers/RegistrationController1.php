@@ -155,7 +155,7 @@ class RegistrationController1 extends Controller
             $file->move(public_path('assets1/images/registration1'), $filename);
             $store->college_id= $filename;
         }
-           
+        $store->allow_pay_later='Pay Later';
             $store->save();
 
             $registration_data1=Registration1::where('id',$store->id)->first();
