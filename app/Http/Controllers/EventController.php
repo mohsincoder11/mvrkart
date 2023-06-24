@@ -156,6 +156,8 @@ class EventController extends Controller
         $event -> description = $request->description;
         $event -> schedule_date = $request->schedule_date;
         $event -> schedule_activity = $request->schedule_activity;
+        $event -> allow_pay_later = $request->allow_pay_later ?? '0';
+
         if ($request->hasFile('event_front_image')) {
             $file1 = $request->file('event_front_image');
             $filename1 = 'f'.rand(1234,9999).time() . '.' . $file1->getClientOriginalExtension();
@@ -211,58 +213,6 @@ class EventController extends Controller
     public function store(Request $request)
     {
 
-           
-
-            //  echo_json_encode($event);
-            //  exit();
-
-
-    //          $filename='';
-    // if($request->hasFile('event_front_image')){
-    //     $file= $request->file('event_front_image');
-    //     $filename=time().'.'.$file->getClientOriginalExtension();
-    //     $file->move(public_path('assets1/images/event/'), $filename);
-    //     $event->event_front_image= 'assets1/images/event/'.$filename;
-    // }
-
-    
-    // $filename='';
-    // if($request->hasFile('event_banner_image')){
-    //     $file= $request->file('event_banner_image');
-    //     $filename=time().'.'.$file->getClientOriginalExtension();
-    //     $file->move(public_path('assets1/images/event/'), $filename);
-    //     $event->event_banner_image= 'assets1/images/event/'.$filename;
-    // }
-       
-    
-        
-            // $event_front_image = $request->file('event_front_image');
-            // $event_front_imageName = time() . '.' . $event_front_image->extension();
-            // $event_front_image->move(public_path('assets1/event'), $event_front_imageName);
-
-
-            
-                   
-            
-            // $event_banner_image = $request->file('event_banner_image');
-            // $event_banner_imageName = time() . '.' . $event_banner_image->extension();
-            // $event_banner_image->move(public_path('assets1/event'), $event_banner_imageName);
-
-            
-            // $filename='';
-            // if($request->hasFile('event_rule_book')){
-            //     $file= $request->file('event_rule_book');
-            //     $filename=rand(0123,9999). time().'.'.$file->getClientOriginalExtension();
-            //     $file->move(public_path('assets1/images/event/'), $filename);
-            //     $event->event_rule_book= 'assets1/images/event/'.$filename;
-            // }
-
-           
-
-            // $event_rule_book = $request->file('event_rule_book');
-            // $event_rule_bookName = time() . '.' . $event_rule_book->extension();
-            // $event_rule_book->move(public_path('assets1/event'), $event_rule_bookName);
-
 
 
         // Save event details in database
@@ -285,6 +235,7 @@ if(isset($request->schedule_date) && count($request->schedule_date)){
         $event -> description = $request->description;
         $event -> schedule_date = $request->schedule_date;
         $event -> schedule_activity = $request->schedule_activity;
+        $event -> allow_pay_later = $request->allow_pay_later ?? '0';
         if ($request->hasFile('event_front_image')) {
             $file1 = $request->file('event_front_image');
             $filename1 = 'f'.rand(1234,9999).time() . '.' . $file1->getClientOriginalExtension();

@@ -20,13 +20,17 @@ class RegistrationController1 extends Controller
     {
 
         $event=Event::find($request->id);
-
-// echo json_encode($event);
-// exit();
         $amount=$event->add_price;
         $event_id=$event->id;
         return view('events.register1',compact('amount','event_id'));
     }
+    public function register_pay_later1(Request $request)
+    {
+
+        $event=Event::find($request->id);
+        $event_id=$event->id;
+        return view('events.register-pay-later',compact('event_id'));
+    } 
     
     public function insert(Request $request)
     {
@@ -109,6 +113,61 @@ class RegistrationController1 extends Controller
         $encrypted_data=$this->encrypt($merchant_data,$this->working_key); // Method for encrypting the data.
       
                 return view('payment_page',compact('encrypted_data','access_code'));
+
+    }
+
+
+    public function insert_pay_later(Request $request)
+    {
+       
+
+        $store = new Registration1;
+            
+        
+        // Save event details in database
+        $store->team_name = $request->team_name;
+        $store->college_name =$request-> college_name;
+        $store->city = $request->city;
+        $store -> state = $request->state;
+        $store -> logo = $request-> logo;
+        $store -> guide_name = $request->guide_name;
+        $store -> team_memeber = $request->team_memeber;
+        $store -> contact_number = $request->contact_number;
+        $store -> email = $request->email;
+        $store -> category = $request->category;
+        $store -> college_id = $request->college_id; 
+        $store -> payment_status = 'Pending';
+        $store -> order_id = $request->order_id;
+        $store -> event_id = $request->event_id;
+
+
+        
+        
+        if ($request->hasFile('logo')) {
+            $file = $request->file('logo');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('assets1/images/registration1'), $filename);
+            $store->logo= $filename;
+        }
+        if ($request->hasFile('college_id')) {
+            $file = $request->file('college_id');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('assets1/images/registration1'), $filename);
+            $store->college_id= $filename;
+        }
+           
+            $store->save();
+
+            $registration_data1=Registration1::where('id',$store->id)->first();
+            $registration_data=['registration_data'=>$registration_data1];
+                   Mail::send('success_mail', $registration_data, function($message) use($registration_data1) {
+                    $message->to($registration_data1->email, $registration_data1->team_name)->subject
+                       ('Registration success');
+                    $message->from('info@mvrmotorsports.com','Kart 1');
+                   });
+                   // dd('success');
+                   return redirect()->route('success-landing')->with(['success'=> 'Event subscribed successfully.']);
+           
 
     }
 
